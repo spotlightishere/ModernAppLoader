@@ -7,6 +7,11 @@
 import IOKit
 import IOUSBHost
 
+public enum BBUSBErrors: Error {
+    case kernelError(kern_return_t)
+    case noDevicesFound
+}
+
 public struct BBUSB {
     let RIM_VENDOR = 0x0FCA
     // There appear to be several product IDs.
@@ -19,11 +24,6 @@ public struct BBUSB {
     let LOADER_PROTOCOL = 0xFF
 
     public init() {}
-
-    enum Errors: Error {
-        case kernelError(kern_return_t)
-        case noDevicesFound
-    }
 
     public func enumerate() throws {
         // In Objective-C, IOUSBHostDevice/IOUSBHostInterface provide a very handy function
@@ -52,7 +52,7 @@ public struct BBUSB {
         var iterator: io_iterator_t = 0
         let matchResult = IOServiceGetMatchingServices(kIOMainPortDefault, searchDictionary as CFDictionary, &iterator)
         guard matchResult == KERN_SUCCESS else {
-            throw Errors.kernelError(matchResult)
+            throw BBUSBErrors.kernelError(matchResult)
         }
 
         // Attempt to create an IOUSBHostInterface for all interfaces.
@@ -69,7 +69,7 @@ public struct BBUSB {
         }
 
         if devices.isEmpty {
-            throw Errors.noDevicesFound
+            throw BBUSBErrors.noDevicesFound
         }
 
         print("Found \(devices.count) device(s).")
