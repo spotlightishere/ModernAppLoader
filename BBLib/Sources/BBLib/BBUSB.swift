@@ -1,5 +1,5 @@
 //
-//  BBLib.swift
+//  BBUSB.swift
 //
 //
 //  Created by Spotlight Deveaux on 2023-01-01.
@@ -7,7 +7,7 @@
 import IOKit
 import IOUSBHost
 
-public struct BBLib {
+public struct BBUSB {
     let RIM_VENDOR = 0x0FCA
     // There appear to be several product IDs.
     // TODO: Complete list

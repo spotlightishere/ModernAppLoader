@@ -14,7 +14,7 @@ struct ContentView: View {
             Text("Hello, world!")
                 .onAppear {
                     do {
-                        try BBLib().enumerate()
+                        try BBUSB().enumerate()
                     } catch let e {
                         print("Error: \(e)")
                     }
