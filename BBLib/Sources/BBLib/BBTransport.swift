@@ -59,8 +59,8 @@ public struct BBTransport {
         guard minimumReadSize >= readAmount else {
             throw BBTransportError.insufficientRead
         }
-        let response = responseData.subdata(with: NSRange(0 ... readAmount))
-        logger.trace("Read from BlackBerry: \(response.hex())")
+        let response = (responseData as Data).prefix(upTo: readAmount)
+        logger.trace("Read \(readAmount) bytes from BlackBerry: \(response.hex())")
 
         return response
     }
