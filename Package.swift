@@ -11,11 +11,16 @@ let package = Package(
             name: "BBLib",
             targets: ["BBLib"]
         ),
+        .executable(name: "bbctl", targets: ["bbctl"])
     ],
     targets: [
         .target(
             name: "BBLib",
             dependencies: []
         ),
+        .executableTarget(
+            name: "bbctl",
+            dependencies: ["BBLib"]
+        )
     ]
 )
