@@ -11,7 +11,6 @@ let package = Package(
             name: "BBLib",
             targets: ["BBLib"]
         ),
-        .executable(name: "bbctl", targets: ["bbctl"])
     ],
     targets: [
         .target(
