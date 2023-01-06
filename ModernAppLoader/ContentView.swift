@@ -13,10 +13,12 @@ struct ContentView: View {
         VStack {
             Text("Hello, world!")
                 .onAppear {
-                    do {
-                        try BBUSB().enumerate()
-                    } catch let e {
-                        print("Error: \(e)")
+                    Task {
+                        do {
+                            try await BBUSB().enumerate()
+                        } catch let e {
+                            print("Error: \(e)")
+                        }
                     }
                 }
         }

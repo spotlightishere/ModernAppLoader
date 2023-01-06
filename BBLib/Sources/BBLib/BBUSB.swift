@@ -25,7 +25,20 @@ public struct BBUSB {
 
     public init() {}
 
-    public func enumerate() throws {
+    public func enumerate() async throws {
+        let interfaces = try enumerateInterfaces()
+        let devices = interfaces.map { interface in
+            BBDevice(via: interface)
+        }
+
+        for device in devices {
+            try await device.sendHandshake()
+        }
+    }
+
+    /// Searches for connected BlackBerry USB devices, narrowing down usable interfaces.
+    /// - Returns: An array of interfaces with potential devices
+    func enumerateInterfaces() throws -> [IOUSBHostInterface] {
         // In Objective-C, IOUSBHostDevice/IOUSBHostInterface provide a very handy function
         // titled createMatchingDictionary with parameters to specify vendor, product, etc:
         // https://developer.apple.com/documentation/iousbhost/iousbhostinterface/3181699-creatematchingdictionarywithvend?language=objc
@@ -73,5 +86,6 @@ public struct BBUSB {
         }
 
         print("Found \(devices.count) device(s).")
+        return devices
     }
 }
