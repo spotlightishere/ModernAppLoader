@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "BBLib",
+    name: "ModernAppLoader",
     platforms: [
         .macOS(.v13),
     ],

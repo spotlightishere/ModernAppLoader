@@ -1,5 +1,5 @@
 # ModernAppLoader
-A modern implementation of BlackBerry's App Loader. Thoroughly in progress.
+A modern implementation of BlackBerry's App Loader. Thoroughly in progress. Utilizes [IOUSBHost](https://developer.apple.com/documentation/iousbhost).
 
 Miscellaneous notes:
 ## SFI File Format
