@@ -1,6 +1,4 @@
 # ModernAppLoader
-A modern implementation of BlackBerry's App Loader. Thoroughly in progress. Utilizes [IOUSBHost](https://developer.apple.com/documentation/iousbhost).
+ModernAppLoader was a Swift implementation of BlackBerry's App Loader. It utilized [IOUSBHost](https://developer.apple.com/documentation/iousbhost).
 
-Miscellaneous notes:
-## SFI File Format
-https://sc0ty.pl/wp-content/uploads/downloads/2012/07/sfi-mfi-file-struct.txt
+Please find its current, Rust-based implementation at [bbctl](https://github.com/spotlightishere/bbctl).
