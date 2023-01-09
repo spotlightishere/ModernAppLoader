@@ -1,6 +1,6 @@
 //
 //  bbctl.swift
-//  
+//
 //
 //  Created by Spotlight Deveaux on 2023-01-06.
 //
@@ -9,7 +9,7 @@ import BBLib
 import Foundation
 
 @main
-public struct lol {
+public enum bbctl {
     static func main() async {
         do {
             try await BBUSB().enumerate()

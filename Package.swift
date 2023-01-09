@@ -17,9 +17,13 @@ let package = Package(
             name: "BBLib",
             dependencies: []
         ),
+        .testTarget(
+            name: "BBLibTests",
+            dependencies: ["BBLib"]
+        ),
         .executableTarget(
             name: "bbctl",
             dependencies: ["BBLib"]
-        )
+        ),
     ]
 )
